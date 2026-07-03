@@ -1,15 +1,15 @@
 # Cooper
 
-> Premium Astro 6 Boilerplate for SaaS, Startups, and Developers.
+> Premium Astro 7 Boilerplate for SaaS, Startups, and Developers.
 
 ## Summary
 
-Cooper is a high-performance, SEO-optimized starter built with **Astro 6**, **Tailwind CSS 4**, and **React 19**. It is engineered for speed, accessibility, and exploration, providing a robust foundation for modern web applications with a focus on developer experience and zero-vulnerability security.
+Cooper is a high-performance, SEO-optimized starter built with **Astro 7**, **Tailwind CSS 4**, and **React 19**. It is engineered for speed, accessibility, and exploration, providing a robust foundation for modern web applications with a focus on developer experience and zero-vulnerability security.
 
 ## Architecture
 
-- **Framework**: Astro 6.1+ (Static Site Generation with SSR support)
-- **Vite**: Powered by Vite 7 for lightning-fast builds
+- **Framework**: Astro 7+ (Static Site Generation with SSR support)
+- **Vite**: Powered by Vite 8 for lightning-fast builds
 - **Styling**: Tailwind CSS 4.2 (CSS-first configuration with high-performance engine)
 - **Interactivity**: React 19 Islands (hydrated only when needed)
 - **Content**: MDX (Docs, Blog, Changelog) with Mermaid diagram support
