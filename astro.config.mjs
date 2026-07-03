@@ -1,4 +1,5 @@
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
@@ -58,9 +59,12 @@ export default defineConfig({
     quality: 80,
   },
   adapter: getAdapter(),
+  compressHTML: true,
   markdown: {
-    remarkPlugins: [stripIdsPlugin],
-    rehypePlugins: [stripIdsPlugin],
+    processor: unified({
+      remarkPlugins: [stripIdsPlugin],
+      rehypePlugins: [stripIdsPlugin],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
@@ -79,12 +83,11 @@ export default defineConfig({
     routing: { prefixDefaultLocale: true }
   },
   integrations: [
-    sitemap(), 
-    react(), 
-    mdx({
-      remarkPlugins: [stripIdsPlugin],
-      rehypePlugins: [stripIdsPlugin]
+    sitemap({
+      filter: (page) => !page.includes('/demo/'),
     }),
+    react(), 
+    mdx(),
     mermaid()
   ]
 });

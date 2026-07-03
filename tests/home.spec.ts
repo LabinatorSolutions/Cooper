@@ -6,6 +6,7 @@ test.describe('Home Page', () => {
     const brandName = page.getByText(/Cooper/i).first();
     await expect(brandName).toBeVisible();
     await expect(page.getByText(/Ship Faster with/i)).toBeVisible();
+    await expect(page.locator('[data-hero-variant="centered"]')).toBeVisible();
   });
 
   test('navigation to Docs should work via Get Started button', async ({ page }) => {
@@ -29,4 +30,25 @@ test.describe('Home Page', () => {
     const input = page.getByPlaceholder(/Search.../i);
     await expect(input).toBeVisible({ timeout: 10000 });
   });
+
+  test('Demos nav dropdown links to the split hero demo page', async ({ page }) => {
+    await page.goto('/en');
+    const demosButton = page.getByRole('button', { name: /Demos/i });
+    await expect(demosButton).toBeVisible({ timeout: 10000 }); // wait for DesktopNav hydration (client:only="react")
+    await demosButton.click();
+    const splitLink = page.getByRole('menuitem', { name: /Home Split/i });
+    await expect(splitLink).toBeVisible();
+    await expect(splitLink).toHaveAttribute('href', '/demo/home-split');
+  });
+});
+
+test.describe('Hero variant demo pages', () => {
+  const variants = ['centered', 'split', 'cinematic', 'terminal'];
+
+  for (const variant of variants) {
+    test(`/demo/home-${variant} renders the ${variant} hero variant`, async ({ page }) => {
+      await page.goto(`/demo/home-${variant}`);
+      await expect(page.locator(`[data-hero-variant="${variant}"]`)).toBeVisible();
+    });
+  }
 });

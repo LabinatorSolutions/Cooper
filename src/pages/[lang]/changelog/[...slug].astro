@@ -6,8 +6,6 @@ import ChangelogSidebar from '~/components/changelog/ChangelogSidebar.astro';
 import Container from '~/components/ui/Container.astro';
 import Section from '~/components/layout/Section.astro';
 import PageHeader from '~/components/layout/PageHeader.astro';
-import { languages } from '~/i18n/ui';
-import { useTranslations } from '~/i18n/utils';
 
 export async function getStaticPaths() {
   const entries = await getCollection('changelog');
@@ -28,7 +26,6 @@ interface Props {
 const { entry } = Astro.props;
 const { lang } = Astro.params;
 const { Content } = await render(entry);
-const t = useTranslations(lang);
 
 ---
 

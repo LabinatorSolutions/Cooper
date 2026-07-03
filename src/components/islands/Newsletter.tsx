@@ -19,7 +19,7 @@ export default function Newsletter({
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState(""); // Spam protection
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     
     // If honeypot is filled, it's a bot
@@ -85,11 +85,15 @@ export default function Newsletter({
                 <div className="relative">
                   <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Honeypot field (hidden from users) */}
-                    <input 
-                      type="hidden" 
-                      name="b_name" 
+                    <input
+                      type="text"
+                      name="b_name"
                       value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
                       aria-hidden="true"
+                      className="hidden"
                     />
                     
                     <div className="relative">

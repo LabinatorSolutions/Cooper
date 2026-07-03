@@ -41,3 +41,9 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# brainstorming companion
+.superpowers/
+
+# superpowers specs/plans (working docs, not project deliverables)
+docs/superpowers/

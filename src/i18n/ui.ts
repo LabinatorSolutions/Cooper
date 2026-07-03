@@ -24,7 +24,7 @@ export const ui: Record<string, Record<string, string>> = {};
 for (const path in locales) {
   const code = path.match(/\/([a-z]{2})\.properties$/)?.[1];
   if (code) {
-    const content = (locales[path] as { default: string }).default;
+    const content = (locales[path] as unknown as { default: string }).default;
     const props = parseProperties(content);
     ui[code] = props;
     languages[code] = props['system.language_name'] || code.toUpperCase();
